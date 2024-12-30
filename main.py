@@ -46,22 +46,11 @@ def setup_arch():
     """Основная функция установки"""
     print("Добро пожаловать в ArchInstaller на Python!")
     
-    # Шаг 1: Выбор диска
     disk = select_disk()
-
-    # Шаг 2: Разметка диска
     partition_disk(disk)
-
-    # Шаг 3: Форматирование раздела
     format_partition(disk)
-
-    # Шаг 4: Монтирование раздела
     mount_partition(disk)
-
-    # Шаг 5: Установка базовой системы
     install_base_system()
-
-    # Шаг 6: Генерация fstab
     generate_fstab()
 
     print("Базовая система установлена успешно! Перезагрузите компьютер и продолжите настройку системы.")
