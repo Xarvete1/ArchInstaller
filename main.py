@@ -17,14 +17,14 @@ def partition_disk(disk):
     """Разметка диска"""
     print(f"Создаем таблицу разделов GPT на {disk}...")
     run_command(f"parted {disk} --script mklabel gpt")
-    print("Создаем основной раздел ext4...")
-    run_command(f"parted {disk} --script mkpart primary ext4 1MiB 100%")
+    print("Создаем основной раздел f2fs...")
+    run_command(f"parted {disk} --script mkpart primary f2fs 1MiB 100%")
 
 def format_partition(disk):
     """Форматирование раздела"""
     partition = f"{disk}1"
-    print(f"Форматируем раздел {partition} в ext4...")
-    run_command(f"mkfs.ext4 {partition}")
+    print(f"Форматируем раздел {partition} в f2fs...")
+    run_command(f"mkfs.f2fs {partition}")
 
 def mount_partition(disk):
     """Монтирование раздела"""
@@ -44,7 +44,7 @@ def generate_fstab():
 
 def setup_arch():
     """Основная функция установки"""
-    print("Добро пожаловать в ArchInstaller на Python!")
+    print("Добро пожаловать в ArchInstaller!")
     
     disk = select_disk()
     partition_disk(disk)
